@@ -1,7 +1,13 @@
 const express = require("express");
+const connection = require("./config/db");
 
 const app = express();
 
+connection();
+
+app.get("/health",(req,res) => {
+    res.send(`Up and running at ${new Date()}`);
+});
 
 
 
