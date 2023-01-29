@@ -140,6 +140,7 @@ route.post("/api/createfile",async(req,res,next)=>{
                         console.log(err);
                     }
                 });
+                res.send(true);
                 return;
             }
             await file.create({name: fileName, folder: folderName, content: newContent});
