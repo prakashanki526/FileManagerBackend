@@ -117,6 +117,21 @@ route.get("/api/getfiles/:folderName",async(req,res,next)=>{
     }
 })
 
+route.get("/api/getallfiles",(req,res,next)=>{
+    try {
+        file.find({},(err,found)=>{
+            if(err){
+                console.log(err);
+                return;
+            }
+            res.send(found);
+        });
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
 route.post("/api/createfile",async(req,res,next)=>{
     try {
         const folderName = req.query.folderName;
